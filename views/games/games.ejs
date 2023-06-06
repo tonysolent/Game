@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>All Games</title>
+  <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+  <h1>All Games</h1>
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Release Date</th>
+      <th>Team</th>
+      <th>Rating</th>
+    </tr>
+    <% games.forEach((game) => { %>
+      <tr>
+        <td><%= game.Title %></td>
+        <td><%= game['Release Date'] %></td>
+        <td><%= game.Team %></td>
+        <td><%= game.Rating %></td>
+      </tr>
+    <% }); %>
+  </table>
+</body>
+</html>

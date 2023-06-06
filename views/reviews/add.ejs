@@ -1,0 +1,21 @@
+<% include ../partials/header.ejs %>
+
+<h1>Add Review for <%= gameId %></h1>
+
+<form action="/games/<%= gameId %>/reviews" method="POST">
+  <div>
+    <label for="username">Username:</label>
+    <input type="text" name="username" required>
+  </div>
+  <div>
+    <label for="rating">Rating:</label>
+    <input type="text" name="rating" required>
+  </div>
+  <div>
+    <label for="review">Review:</label>
+    <textarea name="review" required></textarea>
+  </div>
+  <button type="submit">Add Review</button>
+</form>
+
+<% include ../partials/footer.ejs %>

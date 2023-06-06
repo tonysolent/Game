@@ -1,0 +1,47 @@
+<%- include('../partials/header') %>
+
+<h1>🎮 Welcome to the Game Database 🎮</h1>
+<p style="font-size: 20px; font-weight: bold; color: #333;">Welcome to our game management system! With this application, you can effortlessly organize your game collection. Add, edit, and delete game records with ease, and keep track of important details like title, release date, rating, and genres. Experience a user-friendly interface that simplifies game management and enhances your gaming experience.</p>
+
+
+<form action="/search" method="GET">
+  <input type="text" name="query" placeholder="Search...">
+  <button type="submit">Search</button>
+</form>
+
+<a href="/games">See All New added Games</a> <!-- New hyperlink added -->
+<p style="font-size: 18px; color: #555;">⬇️ Click the button below to view all games: </p>
+
+  <a href="/raw-data" style="text-decoration: none; font-weight: bold; color: #007bff; font-size: 16px;">View All games</a>
+
+
+<% if (games && games.length > 0) { %>
+  <% games.forEach(function(game) { %>
+    <div class="game">
+      <h2><%= game.Title %></h2>
+      <p>Release Date: <%= game['Release Date'] %></p>
+      <p>Rating: <%= game.Rating %></p>
+      <p>Genres: <%= game.Genres %></p>
+      <p>Summary: <%= game.Summary %></p>
+      <a href="/games/<%= game._id %>">Details</a>
+    </div>
+  <% }); %>
+<% } else { %>
+  <p>No games found.</p>
+<% } %>
+
+<h1>Newly added games below ⬇️</h1>
+
+<!-- Add the hyperlink to the new functionality -->
+<a href="/games/databaseadd">Add a Game</a>
+
+<!-- Existing game list -->
+<ul>
+  <% games.forEach((game) => { %>
+    <li>
+      <a href="/games/<%= game.id %>"><%= game.title %></a>
+    </li>
+  <% }); %>
+</ul>
+
+<%- include('../partials/footer') %>

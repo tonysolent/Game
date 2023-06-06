@@ -1,0 +1,12 @@
+<%- include('../partials/header') %>
+
+<h1>Delete Game</h1>
+
+<p>Are you sure you want to delete the game "<%= title %>"?</p>
+
+<form action="/games/databasedelete" method="POST">
+  <input type="hidden" name="id" value="<%= id %>">
+  <button type="submit">Yes, delete</button>
+</form>
+
+<%- include('../partials/footer') %>

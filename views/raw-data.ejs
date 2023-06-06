@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Raw Data</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f5f5f5;
+      font-weight: bold;
+    }
+
+    a {
+      text-decoration: none;
+      color: #007bff;
+    }
+
+    form {
+      display: inline;
+      margin: 0;
+      padding: 0;
+    }
+
+    button {
+      background-color: transparent;
+      border: none;
+      color: #007bff;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Ultimate Game Database</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Release Date</th>
+        <th>Team</th>
+        <th>Rating</th>
+        <th>Times Listed</th>
+        <th>Number of Reviews</th>
+        <th>Genres</th>
+        <th>Summary</th>
+        <th>Reviews</th>
+        <th>Plays</th>
+        <th>Playing</th>
+        <th>Backlogs</th>
+        <th>Wishlist</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% gamesData.forEach(function(game) { %>
+        <tr>
+          <td><%= game.Title %></td>
+          <td><%= game['Release Date'] %></td>
+          <td><%= game.Team %></td>
+          <td><%= game.Rating %></td>
+          <td><%= game['Times Listed'] %></td>
+          <td><%= game['Number of Reviews'] %></td>
+          <td><%= game.Genres %></td>
+          <td><%= game.Summary %></td>
+          <td><%= game.Reviews %></td>
+          <td><%= game.Plays %></td>
+          <td><%= game.Playing %></td>
+          <td><%= game.Backlogs %></td>
+          <td><%= game.Wishlist %></td>
+          <td>
+            <a href="/raw-data/edit/<%= game.Id %>">Edit</a>
+            <form method="POST" action="/raw-data/delete/<%= game.Id %>">
+              <input type="hidden" name="_method" value="DELETE">
+              <button type="submit">Delete</button>
+            </form>
+          </td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</body>
+</html>

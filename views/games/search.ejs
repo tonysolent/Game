@@ -1,0 +1,24 @@
+<!-- views/games/search.ejs -->
+
+<% include ../partials/header.ejs %>
+
+<h1>Search Results</h1>
+
+<p>Query: <%= query %></p>
+
+<% if (games.length > 0) { %>
+  <% games.forEach((game) => { %>
+    <div class="game">
+      <h2><%= game.Title %></h2>
+      <p>Release Date: <%= game['Release Date'] %></p>
+      <p>Rating: <%= game.Rating %></p>
+      <p>Genres: <%= game.Genres %></p>
+      <p>Summary: <%= game.Summary %></p>
+      <a href="/games/<%= game._id %>">Details</a>
+    </div>
+  <% }) %>
+<% } else { %>
+  <p>No games found.</p>
+<% } %>
+
+<% include ../partials/footer.ejs %>

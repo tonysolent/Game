@@ -1,0 +1,16 @@
+<% include ../partials/header.ejs %>
+
+<h1>Reviews for <%= game.title %></h1>
+
+<ul>
+  <% game.reviews.forEach((review) => { %>
+    <li>
+      <p>Rating: <%= review.rating %></p>
+      <p>Comment: <%= review.comment %></p>
+    </li>
+  <% }); %>
+</ul>
+
+<a href="/games/<%= game._id %>/reviews/add">Add Review</a>
+
+<% include ../partials/footer.ejs %>

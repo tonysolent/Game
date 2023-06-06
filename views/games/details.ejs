@@ -1,0 +1,15 @@
+<%- include('../partials/header.ejs') %>
+
+<h1><%= game.title %></h1>
+
+<p>Release Date: <%= game.releaseDate %></p>
+<p>Rating: <%= game.rating %></p>
+<p>Genres: <%= Array.isArray(game.genres) ? game.genres.join(', ') : game.genres %></p>
+<p>Summary: <%= game.summary %></p>
+
+<a href="/games/<%= game._id %>/edit">Edit</a>
+<form action="/games/<%= game._id %>?_method=DELETE" method="POST">
+  <button type="submit">Delete</button>
+</form>
+
+<%- include('../partials/footer.ejs') %>
